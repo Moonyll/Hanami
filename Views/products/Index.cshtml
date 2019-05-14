@@ -1,231 +1,120 @@
 ﻿@model IEnumerable<hanami.Models.product>
-
 @{
     ViewBag.Title = "Menu";
 }
-
 <h1>Catégories des produits</h1>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#panier">
+    Votre Panier
+</button>
 <div class="container">
+    @* Sushi Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#sushi">Sushi</button>
     <div id="sushi" class="collapse">
-        <table class="table">
+        <table class="table" id="sushies">
             <tr>
-                <th>
-                    Catégorie
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Prix (Euros TTC)
-                </th>
-                <th>
-                    Référence
-                </th>
-                <th>
-                    Illustration
-                </th>
-                <th></th>
+                <th>Catégorie</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Référence</th>
+                <th>Illustration</th>
             </tr>
-
             @foreach (var item in Model.Where(x => x.category.name_category == "Sushi"))
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.category.name_category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.reference)
-                    </td>
-                    <td>
-                       <img src="@Url.Content(item.url_image)" />
-                    </td>
-                    <td>
-                        @Html.ActionLink("Commander / Ajouter au panier", "Edit", new { id = item.id_product })
-                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.category.name_category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.price) €</td>
+                    <td>@Html.DisplayFor(modelItem => item.reference)</td>
+                    <td><img src="@Url.Content(item.url_image)" /></td>
+                    <td><button onclick="order()">Commander / Ajouter au panier</button></td>
                 </tr>
             }
         </table>
     </div>
+    @* Maki Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#maki">Maki</button>
     <div id="maki" class="collapse">
         <table class="table">
             <tr>
-                <th>
-                    Catégorie
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Prix
-                </th>
-                <th>
-                    Référence
-                </th>
-                <th>
-                    Illustration
-                </th>
-                <th></th>
+                <th>Catégorie</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Référence</th>
+                <th>Illustration</th>
             </tr>
 
             @foreach (var item in Model.Where(x => x.category.name_category == "Maki"))
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.category.name_category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.reference)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.url_image)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Commander / Ajouter au panier", "Edit", new { id = item.id_product })
-                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.category.name_category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.price) €</td>
+                    <td>@Html.DisplayFor(modelItem => item.reference)</td>
+                    <td><img src="@Url.Content(item.url_image)" /></td>
+                    <td><button onclick="order()">Commander / Ajouter au panier</button></td>
                 </tr>
             }
         </table>
     </div>
+    @* Sashimi Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#sashimi">Sashimi</button>
     <div id="sashimi" class="collapse">
         <table class="table">
             <tr>
-                <th>
-                    Catégorie
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Prix
-                </th>
-                <th>
-                    Référence
-                </th>
-                <th>
-                    Illustration
-                </th>
-                <th></th>
+                <th>Catégorie</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Référence</th>
+                <th>Illustration</th>
             </tr>
-
             @foreach (var item in Model.Where(x => x.category.name_category == "Sashimi"))
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.category.name_category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.reference)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.url_image)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Commander / Ajouter au panier", "Edit", new { id = item.id_product })
-                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.category.name_category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.price) €</td>
+                    <td>@Html.DisplayFor(modelItem => item.reference)</td>
+                    <td><img src="@Url.Content(item.url_image)" /></td>
+                    <td><button onclick="order()">Commander / Ajouter au panier</button></td>
                 </tr>
             }
         </table>
     </div>
+    @* Brochettes Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#brochettes">Brochettes</button>
     <div id="brochettes" class="collapse">
         <table class="table">
             <tr>
-                <th>
-                    Catégorie
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Prix
-                </th>
-                <th>
-                    Référence
-                </th>
-                <th>
-                    Illustration
-                </th>
-                <th></th>
+                <th>Catégorie</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Référence</th>
+                <th>Illustration</th>
             </tr>
-
             @foreach (var item in Model.Where(x => x.category.name_category == "Brochettes"))
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.category.name_category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.reference)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.url_image)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Commander / Ajouter au panier", "Edit", new { id = item.id_product })
-                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.category.name_category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.price) €</td>
+                    <td>@Html.DisplayFor(modelItem => item.reference)</td>
+                    <td><img src="@Url.Content(item.url_image)" /></td>
+                    <td><button onclick="order()">Commander / Ajouter au panier</button></td>
                 </tr>
             }
         </table>
     </div>
 </div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#panier">
-    Votre Panier
-</button>
-
-<!-- Modal -->
+<!-- Modal Pour Le Panier -->
 <div class="modal fade" id="panier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -236,8 +125,27 @@
                 </button>
             </div>
             <div class="modal-body">
-               Reference Quantité Prix ...
-                Prix total
+                <table class="table" id="orders">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Réference</th>
+                            <th>Quantité</th>
+                            <th>Prix (Euros TTC)</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>product name</td>
+                            <td>product ref</td>
+                            <td><input type="number" name="quantity" min="1" max="50" /></td>
+                            <td>product price</td>
+                            <td><button type="button"> retirer produit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                Prix total panier : valeur totale
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -246,6 +154,4 @@
         </div>
     </div>
 </div>
-
-
-
+<script src="~/Scripts/script.js"></script>
