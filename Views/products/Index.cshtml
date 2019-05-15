@@ -13,31 +13,33 @@
     <div id="sushi" class="collapse">
         <table class="table" id="sushies">
             <tr>
-                <th>Catégorie</th>
+                <th hidden>Catégorie</th>
                 <th>Nom</th>
+                <th>Illustration</th>
                 <th>Description</th>
                 <th>Prix</th>
-                <th>Référence</th>
-                <th>Illustration</th>
+                <th hidden>Quantité</th>
+                <th hidden>Référence</th>
             </tr>
             @foreach (var item in Model.Where(x => x.category.name_category == "Sushi"))
             {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.category.name_category)</td>
-                    <td>@Html.DisplayFor(modelItem => item.name)</td>
-                    <td>@Html.DisplayFor(modelItem => item.description)</td>
-                    <td>@Html.DisplayFor(modelItem => item.price) €</td>
-                    <td>@Html.DisplayFor(modelItem => item.reference)</td>
-                    <td><img src="@Url.Content(item.url_image)" /></td>
-                    <td><button onclick="order()">Commander / Ajouter au panier</button></td>
-                </tr>
+            <tr id="rowToClone">
+                <td hidden>@Html.DisplayFor(modelItem => item.category.name_category)</td>
+                <td>@Html.DisplayFor(modelItem => item.name)</td>
+                <td><img src="@Url.Content(item.url_image)" /></td>
+                <td>@Html.DisplayFor(modelItem => item.description)</td>
+                <td>@Html.DisplayFor(modelItem => item.price)</td>
+                <td hidden><input type="number" name="quantity" min="1" max="50" /></td>
+                <td hdidden>@Html.DisplayFor(modelItem => item.reference)</td>
+                <td><input type="button" value="Commander / Ajouter au panier" onclick="order(this)" /></td>
+            </tr>
             }
         </table>
     </div>
     @* Maki Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#maki">Maki</button>
     <div id="maki" class="collapse">
-        <table class="table">
+        <table class="table" id="makies">
             <tr>
                 <th>Catégorie</th>
                 <th>Nom</th>
@@ -64,7 +66,7 @@
     @* Sashimi Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#sashimi">Sashimi</button>
     <div id="sashimi" class="collapse">
-        <table class="table">
+        <table class="table" id="sashimies">
             <tr>
                 <th>Catégorie</th>
                 <th>Nom</th>
@@ -90,7 +92,7 @@
     @* Brochettes Menu *@
     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#brochettes">Brochettes</button>
     <div id="brochettes" class="collapse">
-        <table class="table">
+        <table class="table" id="brokettes">
             <tr>
                 <th>Catégorie</th>
                 <th>Nom</th>
@@ -129,19 +131,19 @@
                     <thead>
                         <tr>
                             <th>Nom</th>
-                            <th>Réference</th>
+                            <th>Référence</th>
                             <th>Quantité</th>
-                            <th>Prix (Euros TTC)</th>
-                            <th>Supprimer</th>
+                            <th>Prix</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>product name</td>
-                            <td>product ref</td>
-                            <td><input type="number" name="quantity" min="1" max="50" /></td>
-                            <td>product price</td>
-                            <td><button type="button"> retirer produit</button></td>
+                            <td hidden>product name</td>
+                            <td hidden>product ref</td>
+                            <td hidden><input type="number" name="quantity" min="1" max="50" /></td>
+                            <td hidden>product price</td>
+                            <td hidden><button type="button">retirer produit</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -149,7 +151,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="total()">Actualiser Panier</button>
             </div>
         </div>
     </div>
