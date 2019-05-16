@@ -9,30 +9,21 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header>
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("HANAMI SUSHI BAR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="btn btn-info btn-lg">HANAMI SUSHI BAR</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">153 Quai George V 76600 LE HAVRE</button>
+                <button type="button" class="btn btn-info">02 35 42 39 33</button>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+            <button type="button" class="btn btn-secondary pull-right" data-toggle="modal" data-target="#panier">Votre Panier</button>
         </div>
-    </div>
+    </header>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Hanami Sushi Bar</p>
+        <footer class="fixed-bottom bg-info">
+            <p class="text-center">&copy; @DateTime.Now.Year - Hanami Sushi Bar - Un Site proposé par la Manu.</p>
         </footer>
     </div>
 
