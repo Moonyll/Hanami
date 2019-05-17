@@ -26,6 +26,7 @@ textarea {
 }
 th, td {
     text-align: center;
+    justify-content:center;
     border: 1px solid white;
     color: #1a53ff;
     vertical-align: middle;
@@ -39,8 +40,9 @@ th, td {
     cursor: pointer;
 }
 #invoice {
-    color: #1aff1a;
-    font-weight:bold;
+    color: #347AB6;
+    font-size:15px;
+    font-weight: bold;
 }
 .desc {
     border: 1px solid white;
@@ -50,4 +52,37 @@ th, td {
     font-size: 25px;
     color: white;
     vertical-align: middle;
+}
+td:nth-child(1), td:nth-child(2), td:nth-child(4), td:nth-child(6) {
+    font-size: 15px;
+    color: #347AB6;
+    font-weight: bold;
+}
+td:nth-child(8) {
+    font-size: 15px;
+    color:#347AB6;
+    font-weight: bold;
+    /*border:none;*/
+}
+td:nth-child(5) {
+    font-size: 15px;
+    color:#347AB6;
+    font-weight: bold;
+}
+th {
+    font-size: 15px;
+    color:#347AB6;
+}
+th:nth-child(7) {
+    border: none;
+}
+.just{
+    position:relative;
+    vertical-align:middle;
+    margin-top:80px;
+    padding:10px;
+}
+.pri{
+    font-size:15px;
+    padding:5px;
 }

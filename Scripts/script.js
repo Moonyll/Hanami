@@ -71,7 +71,7 @@ function total() {
     total_orders = total_orders + parseFloat((table_order.rows[i].cells[5].innerHTML).replace(",", "."))*parseInt(table_order.rows[i].cells[2].innerHTML);
     }
     var round_total = Math.round(total_orders * 100) / 100; // Arrondi à 2 chiffres !
-    document.getElementById("invoice").innerText= "** Merci pour votre commmande ! Votre panier s'élève à : " + round_total+" Euros. **";
+    document.getElementById("invoice").innerText = "Merci pour votre commmande !" + "\n" + "Total Panier : " + round_total +" & euro;";
 } 
 
 function increase(x) {

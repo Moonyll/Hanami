@@ -35,7 +35,7 @@ Hanami Sushi Bar vous accueille dans son petit restaurant pour y savourer des sp
                     <td>@Html.DisplayFor(modelItem => item.price)</td>
                     <td hidden><input type="number" name="quantity" min="1" max="50" /></td>
                     <td hidden>@Html.DisplayFor(modelItem => item.reference)</td>
-                    <td><input type="button" value="Commander / Ajouter au panier" onclick="order_sushies(this)" /></td>
+                    <td><input type="button" value="Commander / Ajouter au panier" onclick="order_sushies(this)" class="just" /></td>
                 </tr>
             }
         </table>
@@ -142,34 +142,34 @@ Hanami Sushi Bar vous accueille dans son petit restaurant pour y savourer des sp
             </div>
             <div class="modal-body">
                 <table class="table" id="orders">
-                    <thead>
+                    <thead class="bg-info">
                         <tr>
                             <th>Nom</th>
                             <th>Référence</th>
                             <th>Quantité</th>
-                            <th></th>
-                            <th></th>
-                            <th>Prix</th>
-                            <th></th>
+                            <th colspan="2">Modifier</th>
+                            @*<th></th>*@
+                            <th class="pri">Prix (&euro;)</th>
+                            @*<th hidden></th>*@
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td hidden>product name</td>
+                            @*<td hidden>product name</td>
                             <td hidden>product ref</td>
                             <td hidden><input type="number" name="quantity" min="1" max="50" /></td>
                             <td></td>
                             <td></td>
                             <td hidden>product price</td>
-                            <td hidden><button type="button">retirer produit</button></td>
+                            <td hidden><button type="button">retirer produit</button></td>*@
                         </tr>
                     </tbody>
                 </table>
                 <hr />
-                <div id="invoice" class="text-center"></div>
+                <div id="invoice" class="text-center bg-info"></div>
             </div>
             <div class="modal-footer bg-primary">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
                 <button type="button" class="btn btn-info" onclick="total()">Actualiser Panier</button>
             </div>
         </div>
